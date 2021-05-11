@@ -1,37 +1,42 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
+import {createAppContainer, createSwitchNavigator} from 'react-navigation'
+import {createStackNavigator} from 'react-navigation-stack'
+import LoadingScreen from './screens/LoadingScreen'
+import LoginScreen from './screens/LoginScreen'
+import RegisterScreen from './screens/RegisterScreen'
+import HomeScreen from './screens/HomeScreen'
 
-      {/* {Cards} */}
-      <View style={styles.cards}>
-        <Text style={styles.sectionTitle}>Today's Card</Text>
+import * as firebase from 'firebase'
 
-        <View style={styles.items}>
-           {/* {This is where the card will go} */}
-        </View>
-      </View>
-    </View>
-  );
-}
+var firebaseConfig = {
+  apiKey: "AIzaSyCbliX0ukfMF5HXJkDpqwEKaqy9xw9Kg8o",
+  authDomain: "qrcard-2df18.firebaseapp.com",
+  projectId: "qrcard-2df18",
+  storageBucket: "qrcard-2df18.appspot.com",
+  messagingSenderId: "745752461067",
+  appId: "1:745752461067:web:ade9baa7d83aee7ad9ec0e"
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#E8EAED',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  cards: {
-    paddingTop: 80,
-    paddingHorizontal: 20,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: 'bold'
-  },
-  items: {},
-});
+firebase.initializeApp(firebaseConfig);
+
+const AppStack = createStackNavigator({
+  Home: HomeScreen
+})
+
+const AuthStack = createStackNavigator({
+  Login: LoginScreen,
+  Register: RegisterScreen
+})
+
+export default createAppContainer(
+  createSwitchNavigator(
+    {
+        Loading: LoadingScreen,
+        App: AppStack,
+        Auth: AuthStack
+    },
+    {
+        initialRouteName: "Loading"
+    }
+  )
+)
