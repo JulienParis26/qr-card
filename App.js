@@ -6,7 +6,7 @@ import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import HomeScreen from './screens/HomeScreen'
 
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
 
 var firebaseConfig = {
   apiKey: "AIzaSyCbliX0ukfMF5HXJkDpqwEKaqy9xw9Kg8o",
