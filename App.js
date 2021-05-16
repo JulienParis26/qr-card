@@ -5,6 +5,7 @@ import LoadingScreen from './screens/LoadingScreen'
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import HomeScreen from './screens/HomeScreen'
+import ScanScreen from './screens/ScanScreen'
 
 import * as firebase from 'firebase';
 
@@ -20,13 +21,14 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const AppStack = createStackNavigator({
-  Home: HomeScreen
-})
+  QRCARD: HomeScreen,
+  Scan: ScanScreen
+});
 
 const AuthStack = createStackNavigator({
   Login: LoginScreen,
   Register: RegisterScreen
-})
+});
 
 export default createAppContainer(
   createSwitchNavigator(
