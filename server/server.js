@@ -9,8 +9,12 @@ app.get('/restaurants', (req, res) => {
 });
 
 app.get('/restaurants/:id', (req, res) => {
-  res.send('CARTE');
+  res.writeHead(301,
+    {Location: 'http://restaurant-le-k.fr/wp-content/uploads/2020/05/Menu-le-K4.jpg'}
+  );
+  res.end();
 });
+
 app.listen(port, () => {
    console.log('Server is up!');
 });
