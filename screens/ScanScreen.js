@@ -1,39 +1,48 @@
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, Button, Linking } from 'react-native';
+import { BarCodeScanner } from 'expo-barcode-scanner';
+import BarcodeMask from 'react-native-barcode-mask';
 
-import React from 'react'
-import {View, Text, Image, Button, StyleSheet, TouchableOpacity, TouchableHighlight, Dimensions, Touchable} from 'react-native'
-import MapView from 'react-native-maps';
-import * as firebase from 'firebase'
 
-export default class ScanScreen extends React.Component {
-    state = {
-        email: "",
-        displayName: ""
-    }
+export default function App() {
+  const [hasPermission, setHasPermission] = useState(null);
+  const [scanned, setScanned] = useState(false);
 
-    componentDidMount() {
-        const { email, displayName } = firebase.auth().currentUser;
+  useEffect(() => {
+    (async () => {
+      const { status } = await BarCodeScanner.requestPermissionsAsync();
+      setHasPermission(status === 'granted');
+    })();
+  }, []);
 
-        this.setState({ email, displayName });
-    }
+  const handleBarCodeScanned = ({ type, data }) => {
+    setScanned(true);
+    Linking.openURL(`${data}`);
+  };
 
-    signOutUser = () => {
-        firebase.auth().signOut();
-    };
+  if (hasPermission === null) {
+    return <Text>Requesting for camera permission</Text>;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
 
-    render() {
-        return (
-            <View style={styles.container}>
-            
+  return (
+    <View style={styles.container}>
+      <BarCodeScanner
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+        style={StyleSheet.absoluteFillObject}
+      />
+      <BarcodeMask edgeColor="#fff" showAnimatedLine/>
 
-            </View>
-        )
-    }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-    }
-})
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+});
