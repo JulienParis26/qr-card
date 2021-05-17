@@ -10,7 +10,7 @@ app.get('/restaurants', (req, res) => {
 
 app.get('/restaurants/:id', (req, res) => {
   res.writeHead(301,
-    {Location: req.params.file}
+    {Location: 'http://restaurant-le-k.fr/wp-content/uploads/2020/05/Menu-le-K4.jpg'}
   );
   res.end();
 });
