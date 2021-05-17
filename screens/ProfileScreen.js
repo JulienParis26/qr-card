@@ -5,7 +5,7 @@ import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import * as firebase from 'firebase'
 
-export default class HomeScreen extends React.Component {
+export default class ProfileScreen extends React.Component {
     state = {
         email: "",
         displayName: ""
