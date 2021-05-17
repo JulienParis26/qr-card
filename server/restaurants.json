@@ -1,20 +1,13 @@
 {
   "count": 1,
-  "reports": [
+  "restaurants": [
     {
       "id": 1,
-      "time": "2020-01-14T04:20:00.000Z",
-      "size": 125,
-      "location": "4 ESE GAMALIEL",
       "name": "Fournil d'Agneaux",
-      "county": "MONROE",
-      "state": "KY",
+      "category": "bakker",
+      "card": "yes",
       "lat": 49.11786796093181,
-      "lon": -1.1080848689170786,
-      "comments": "PUBLIC REPORT RELAYED BY MEDIA. (LMK)",
-      "filename": null,
-      "created_at": "2020-07-16T03:35:36.281Z",
-      "updated_at": "2020-07-16T03:35:36.281Z"
+      "lon": -1.1080848689170786
     }
   ]
 }
