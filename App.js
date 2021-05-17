@@ -22,7 +22,7 @@ firebase.initializeApp(firebaseConfig);
 
 const AppStack = createStackNavigator({
   QRCARD: HomeScreen,
-  Scan: ScanScreen
+  Scan: ScanScreen,
 });
 
 const AuthStack = createStackNavigator({
