@@ -32,10 +32,6 @@ export default class HomeScreen extends React.Component {
       .catch(console.error)
     }
 
-    signOutUser = () => {
-        firebase.auth().signOut();
-    };
-
     handleMapRegionChange = (mapRegion) => {
         this.setState({ mapRegion });
     };

@@ -8,11 +8,7 @@ import * as firebase from 'firebase'
 export default class HomeScreen extends React.Component {
     state = {
         email: "",
-        displayName: "",
-        mapRegion: { latitude: 48.866667, longitude: 2.333333, latitudeDelta: 0.0922, longitudeDelta: 0.0421 },
-        hasLocationPermissions: false,
-        locationResult: null,
-        restaurants: [] 
+        displayName: ""
     }
     
 
@@ -20,13 +16,13 @@ export default class HomeScreen extends React.Component {
         const { email, displayName } = firebase.auth().currentUser;
 
         this.setState({ email, displayName });
-    
+    }
 
     signOutUser = () => {
         firebase.auth().signOut();
     };
 
-}
+
 
     render() {
         return (
@@ -34,8 +30,8 @@ export default class HomeScreen extends React.Component {
             
                 <Text>Hi {this.state.email}!</Text>                    
               
-                <TouchableOpacity style={{ marginTop: 10, marginBottom: 32 }} onPress={this.signOutUser}>
-                    <Text style={{ color: "#fff", backgroundColor: 'red', paddingTop: 10, paddingBottom: 10, paddingLeft: 25, paddingRight: 25, borderRadius: 10, marginTop: 600, fontWeight: "500" }}>Logout</Text>
+                <TouchableOpacity style={{ marginTop: 10, marginBottom: 32, borderRadius: 5 }} onPress={this.signOutUser}>
+                    <Text style={{ color: "#fff", backgroundColor: 'red', borderRadius: 20, paddingTop: 10, paddingBottom: 10, paddingLeft: 25, paddingRight: 25, borderRadius: 10, marginTop: 600, fontWeight: "500" }}>Logout</Text>
                 </TouchableOpacity>
             </View>
         )
