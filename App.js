@@ -1,4 +1,3 @@
-
 import {createAppContainer, createSwitchNavigator} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
 import LoadingScreen from './screens/LoadingScreen'
@@ -6,6 +5,7 @@ import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import HomeScreen from './screens/HomeScreen'
 import ScanScreen from './screens/ScanScreen'
+import ProfileScreen from './screens/ProfileScreen'
 
 import * as firebase from 'firebase';
 
@@ -22,7 +22,8 @@ firebase.initializeApp(firebaseConfig);
 
 const AppStack = createStackNavigator({
   QRCARD: HomeScreen,
-  Scan: ScanScreen,
+  SCAN: ScanScreen,
+  PROFILE: ProfileScreen,
 });
 
 const AuthStack = createStackNavigator({

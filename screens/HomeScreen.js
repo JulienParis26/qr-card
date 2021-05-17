@@ -15,7 +15,7 @@ export default class HomeScreen extends React.Component {
         mapRegion: { latitude: 48.866667, longitude: 2.333333, latitudeDelta: 0.0922, longitudeDelta: 0.0421 },
         hasLocationPermissions: false,
         locationResult: null,
-        reports: [] 
+        restaurants: [] 
     }
     
 
@@ -24,10 +24,10 @@ export default class HomeScreen extends React.Component {
 
         this.setState({ email, displayName });
         this.getLocationAsync();
-        fetch('https://enigmatic-reaches-55405.herokuapp.com/reports')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ reports: data.reports })
+        fetch('https://qrcard-app.herokuapp.com/restaurants')
+        .then(res => res.json())
+        .then(data => {
+        this.setState({ restaurants: data.restaurants })
       })
       .catch(console.error)
     }
@@ -62,20 +62,32 @@ export default class HomeScreen extends React.Component {
     }
 
     mapMarkers = () => {
-        return this.state.reports.map((report) => <Marker
-          key={report.id}
-          coordinate={{ latitude: report.lat, longitude: report.lon }}
-          title={report.location}
-          description={report.comments}
+        return this.state.restaurants.map((restaurant) => <Marker
+          key={restaurant.id}
+          coordinate={{ latitude: restaurant.lat, longitude: restaurant.lon }}
+          title={restaurant.name}
+          description={restaurant.category}
         >
+        <View>
+            <Image source={require('../images/store.png')} 
+            style={{
+            width: 30,
+            height: 30
+            }} />
+        </View>
         </Marker >)
       }
 
     render() {
         return (
             <View style={styles.container}>
-            
-                <Text>Hi {this.state.email}!</Text>
+                <Text style={{marginTop: 20, marginLeft: 350, color: '#fff'}} onPress={() => this.props.navigation.navigate("Profile")}> 
+                <Image source={require('../images/user.png')} 
+                    style={{
+                        width: 30,
+                        height: 30,
+                    }}/>
+                </Text>
 
                 <View style={styles.container}>
                     <MapView 
@@ -94,7 +106,6 @@ export default class HomeScreen extends React.Component {
                       {this.mapMarkers()}
                     </MapView>
                 </View>
-
                 <TouchableHighlight
                     style = {{
                         borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
@@ -102,18 +113,16 @@ export default class HomeScreen extends React.Component {
                         height: Dimensions.get('window').width * 0.2,
                         backgroundColor:'#000',
                         justifyContent: 'center',
-                        alignItems: 'center'
+                        alignItems: 'center',
+                        marginBottom: 50
                     }} onPress={() => this.props.navigation.navigate("Scan")}>
 
                     <Image source={require('../images/scan.png')} 
                     style={{
                         width: 50,
-                        height: 50
+                        height: 50,
                     }}/>
                 </TouchableHighlight>
-                <TouchableOpacity style={{ marginTop: 10, marginBottom: 32 }} onPress={this.signOutUser}>
-                    <Text style={{ color: "#232323", fontWeight: "500" }}>Logout</Text>
-                </TouchableOpacity>
             </View>
         )
     }
@@ -122,12 +131,13 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#fff",
+      backgroundColor: "#000",
       alignItems: "center",
       justifyContent: "center",
     },
     mapStyle: {
       width: Dimensions.get("window").width,
       height: Dimensions.get("window").height,
+      marginTop: 300
     },
 });
