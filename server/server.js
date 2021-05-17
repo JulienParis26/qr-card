@@ -9,10 +9,7 @@ app.get('/restaurants', (req, res) => {
 });
 
 app.get('/restaurants/:id', (req, res) => {
-  res.writeHead(301,
-    {Location: req.params.file}
-  );
-  res.end();
+  res.sendFile(path.join(__dirname, '../images', 'carte_1.jpeg'));
 });
 
 app.listen(port, () => {
