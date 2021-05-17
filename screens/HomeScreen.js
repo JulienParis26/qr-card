@@ -12,7 +12,7 @@ export default class HomeScreen extends React.Component {
     state = {
         email: "",
         displayName: "",
-        mapRegion: null,
+        mapRegion: { latitude: 48.866667, longitude: 2.333333, latitudeDelta: 0.0922, longitudeDelta: 0.0421 },
         hasLocationPermissions: false,
         locationResult: null,
     }
@@ -35,14 +35,13 @@ export default class HomeScreen extends React.Component {
     };
 
     async getLocationAsync() {
-        // permissions returns only for location permissions on iOS and under certain conditions, see Permissions.LOCATION
+
         const { status } = await Permissions.askAsync(Permissions.LOCATION);
         if (status === "granted") {
           this.setState({ hasLocationPermissions: true });
-          //  let location = await Location.getCurrentPositionAsync({ enableHighAccuracy: true });
           const location = await Location.getCurrentPositionAsync({});
           this.setState({ locationResult: JSON.stringify(location) });
-          // Center the map on the location we just fetched.
+
           this.setState({
             mapRegion: {
               latitude: location.coords.latitude,
@@ -67,7 +66,7 @@ export default class HomeScreen extends React.Component {
                         style={styles.mapStyle}
                         region={this.state.mapRegion}
                         onRegionChange={this.handleMapRegionChange}
-                        ><MapView.Marker coordinate={this.state.mapRegion} >
+                        ><MapView.Marker coordinate={this.state.mapRegion}>
                         <View>
                           <Image source={require('../images/pin.png')} 
                           style={{
