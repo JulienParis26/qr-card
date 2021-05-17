@@ -15,6 +15,7 @@ export default class HomeScreen extends React.Component {
         mapRegion: { latitude: 48.866667, longitude: 2.333333, latitudeDelta: 0.0922, longitudeDelta: 0.0421 },
         hasLocationPermissions: false,
         locationResult: null,
+        reports: [] 
     }
     
 
@@ -23,7 +24,12 @@ export default class HomeScreen extends React.Component {
 
         this.setState({ email, displayName });
         this.getLocationAsync();
-        
+        fetch('https://enigmatic-reaches-55405.herokuapp.com/reports')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ reports: data.reports })
+      })
+      .catch(console.error)
     }
 
     signOutUser = () => {
@@ -55,6 +61,16 @@ export default class HomeScreen extends React.Component {
         }
     }
 
+    mapMarkers = () => {
+        return this.state.reports.map((report) => <Marker
+          key={report.id}
+          coordinate={{ latitude: report.lat, longitude: report.lon }}
+          title={report.location}
+          description={report.comments}
+        >
+        </Marker >)
+      }
+
     render() {
         return (
             <View style={styles.container}>
@@ -75,6 +91,7 @@ export default class HomeScreen extends React.Component {
                         }} />
                         </View>
                       </MapView.Marker>
+                      {this.mapMarkers()}
                     </MapView>
                 </View>
 
