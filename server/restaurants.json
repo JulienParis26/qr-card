@@ -1,14 +1,32 @@
 {
-  "count": 1,
+  "count": 3,
   "restaurants": [
     {
       "id": 1,
       "name": "Fournil d'Agneaux",
       "category": "baker",
       "card": "yes",
-      "file": "http://restaurant-le-k.fr/wp-content/uploads/2020/05/Menu-le-K4.jpg",
+      "file": "https://static.boulangerie-ange.fr/wp-content/uploads/2020/10/Menu-Hiver_2020-web-807x1024.jpg",
       "lat": 49.11786796093181,
       "lon": -1.1080848689170786
+    },
+    {
+      "id": 2,
+      "name": "L'atelier du Burger",
+      "category": "burger",
+      "card": "yes",
+      "file": "https://cdn.eat-list.fr/establishment/menu/gallery_menu/14000-caen/l-atelier-du-burger_60171_10e.jpg",
+      "lat": 49.117344157488134,
+      "lon": -1.1120960541061398
+    },
+    {
+      "id": 3,
+      "name": "La Cabane à Pizza",
+      "category": "pizza",
+      "card": "yes",
+      "file": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.eat-list.fr%2Fagneaux-50180%2Fpizza-pizzeria-5%2Fla-cabane-a-pizza-50162&psig=AOvVaw0B9On9uinGjhueaZZyGMFe&ust=1621412010082000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOje0Mnk0vACFQAAAAAdAAAAABAO",
+      "lat": 49.120121118987164,
+      "lon": -1.1099616878824592
     }
   ]
 }
