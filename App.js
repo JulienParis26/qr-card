@@ -23,6 +23,7 @@ firebase.initializeApp(firebaseConfig);
 const AppStack = createStackNavigator({
   QRCARD: HomeScreen,
   Profile: ProfileScreen,
+  Scan: ScanScreen,
 });
 
 const AuthStack = createStackNavigator({
@@ -36,13 +37,6 @@ export default createAppContainer(
         Loading: LoadingScreen,
         App: AppStack,
         Auth: AuthStack
-    },
-    {
-        initialRouteName: "Loading",
-        navigationOptions: {
-          headerTintColor: 'blue',
-          headerTransparent: true
-        },
     },
   )
 )
