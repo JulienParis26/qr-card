@@ -73,7 +73,7 @@ export default class RegisterScreen extends React.Component {
                 >
 
                     <Text style={{ color: "#414959", fontSize: 13}}>
-                        Already have an account? <Text style={{ fontWeight: "500", color: "#000000" }}>Login</Text>
+                        Already have an account? <Text style={{ fontWeight: "500", color: "#305049" }}>Login</Text>
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
         marginTop: 32,
         fontSize: 18,
         fontWeight: "400",
-        textAlign: "center"
+        textAlign: "center",
+        color: '#305049'
     },
     errorMessage: {
         height: 72,
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
     },
     button: {
         marginHorizontal: 30,
-        backgroundColor: "#000000",
+        backgroundColor: "#305049",
         borderRadius: 4,
         height: 52,
         alignItems: "center",

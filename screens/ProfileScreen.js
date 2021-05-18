@@ -27,8 +27,10 @@ export default class ProfileScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-            
-                <Text>Hi {this.state.email}!</Text>                    
+
+                <Text style={{marginBottom: 20}}>NAME : {this.state.displayName}</Text>                    
+
+                <Text>EMAIL : {this.state.email}</Text>                    
               
                 <TouchableOpacity style={{ marginTop: 10, marginBottom: 32, borderRadius: 5 }} onPress={this.signOutUser}>
                     <Text style={{ color: "#fff", backgroundColor: 'red', borderRadius: 20, paddingTop: 10, paddingBottom: 10, paddingLeft: 25, paddingRight: 25, borderRadius: 10, marginTop: 600, fontWeight: "500" }}>Logout</Text>

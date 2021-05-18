@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@prisma/client": "^2.22.1",
+    "@react-navigation/native": "^5.9.4",
     "expo": "~41.0.1",
     "expo-barcode-scanner": "~10.1.2",
     "expo-constants": "~10.1.3",

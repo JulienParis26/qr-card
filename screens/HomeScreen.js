@@ -9,6 +9,7 @@ import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
 
 export default class HomeScreen extends React.Component {
+  
     state = {
         email: "",
         displayName: "",
@@ -64,6 +65,7 @@ export default class HomeScreen extends React.Component {
           title={restaurant.name}
           description={restaurant.category}
         >
+        
         <View>
             <Image source={require('../images/store.png')} 
             style={{
@@ -76,14 +78,20 @@ export default class HomeScreen extends React.Component {
 
     render() {
         return (
+          
             <View style={styles.container}>
-                <Text style={{marginTop: 20, marginLeft: 350, color: '#fff'}} onPress={() => this.props.navigation.navigate("Profile")}> 
+                 <View style={{display: 'flex', marginBottom: 15}}>
+
+                 <Text style={{marginTop: 10, color: '#EFD1A9'}}>{this.state.displayName}</Text>                    
+
+                <Text style={{marginLeft: 350, marginBottom: 15, color: '#fff'}} onPress={() => this.props.navigation.navigate("Profile")}>
                 <Image source={require('../images/user.png')} 
                     style={{
                         width: 30,
                         height: 30,
                     }}/>
                 </Text>
+                </View>
 
                 <View style={styles.container}>
                     <MapView 
@@ -107,7 +115,7 @@ export default class HomeScreen extends React.Component {
                         borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
                         width: Dimensions.get('window').width * 0.2,
                         height: Dimensions.get('window').width * 0.2,
-                        backgroundColor:'#000',
+                        backgroundColor:'#305049',
                         justifyContent: 'center',
                         alignItems: 'center',
                         marginBottom: 50
@@ -127,7 +135,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#000",
+      backgroundColor: "#305049",
       alignItems: "center",
       justifyContent: "center",
     },
