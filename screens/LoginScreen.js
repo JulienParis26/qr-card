@@ -58,7 +58,7 @@ export default class LoginScreen extends React.Component {
                 >
 
                     <Text style={{ color: "#414959", fontSize: 13}}>
-                        New to QRCard? <Text style={{ fontWeight: "500", color: "#305049" }}>Sign Up</Text>
+                        New to QRCARD? <Text style={{ fontWeight: "500", color: "#305049" }}>Sign Up</Text>
                     </Text>
                 </TouchableOpacity>
             </View>

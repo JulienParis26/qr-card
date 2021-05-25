@@ -38,12 +38,19 @@ export default class DashboardScreen extends React.Component {
                 </View>
 
                 <View style={styles.menu} > 
-                <View style={styles.SquareShapeView} > 
-                <Text onPress={() => this.props.navigation.navigate("Profile")}> 
-                <Image source={require('../images/user.png')} style={ styles.logoMenu } />
+                
+                <Text style={{ marginLeft: 25, marginRight: 25, marginTop: 5}} onPress={() => this.props.navigation.navigate("Profile")}> 
+                <Image source={require('../images/profile.png')} style={ styles.logoMenuSmall } />
                 </Text>
 
-                </View>
+                <Text onPress={() => this.props.navigation.navigate("Card")}> 
+                <Image source={require('../images/add-card.png')} style={ styles.logoMenu } />
+                </Text>
+
+                <Text style={{ marginLeft: 25, marginRight: 25, marginTop: 5}} onPress={() => this.props.navigation.navigate("QRCode")}> 
+                <Image source={require('../images/qrcode.png')} style={ styles.logoMenuSmall } />
+                </Text>
+
 
                 </View>
 
@@ -69,17 +76,22 @@ const styles = StyleSheet.create({
         color: '#ffffff'
     },
     menu: {
+        flexDirection: "row-reverse",
         width: 250,
-        height: 80,
+        height: 72,
         borderRadius: 30,
-        marginBottom: 30,
+        marginBottom: 50,
         backgroundColor: '#ffffff',
         alignItems: "center",
         justifyContent: "center",
     },
     logoMenu: {
-        width: 50,
-        height: 50,
+        width: 80,
+        height: 80,
+    },
+    logoMenuSmall: {
+        width: 30,
+        height: 30,
         alignItems: "center",
         justifyContent: "center",
     }

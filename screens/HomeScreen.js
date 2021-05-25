@@ -67,10 +67,10 @@ export default class HomeScreen extends React.Component {
         >
         
         <View>
-            <Image source={require('../images/store.png')} 
+            <Image source={require('../images/qrcard-home.png')} 
             style={{
-            width: 30,
-            height: 30
+            width: 60,
+            height: 60
             }} />
         </View>
         </Marker >)
@@ -81,14 +81,6 @@ export default class HomeScreen extends React.Component {
           
             <View style={styles.container}>
 
-                <Text style={{marginLeft: 350, color: '#fff'}} onPress={() => this.props.navigation.navigate("Login")}>
-                <Image source={require('../images/user.png')} 
-                    style={{
-                        width: 30,
-                        height: 30,
-                    }}/>
-                </Text>
-
 
                 <View style={styles.container}>
                     <MapView 
@@ -97,16 +89,23 @@ export default class HomeScreen extends React.Component {
                         onRegionChange={this.handleMapRegionChange}
                         ><MapView.Marker coordinate={this.state.mapRegion}>
                         <View>
-                          <Image source={require('../images/pin.png')} 
+                          <Image source={require('../images/pin2.png')} 
                           style={{
-                        width: 50,
-                        height: 50
+                        width: 80,
+                        height: 80
                         }} />
                         </View>
                       </MapView.Marker>
                       {this.mapMarkers()}
                     </MapView>
                 </View>
+
+                <View style={styles.menu} > 
+
+                <Text style={{  marginLeft: 30, marginBottom: 40 }} onPress={() => this.props.navigation.navigate("Login")}> 
+                <Image source={require('../images/user-home.png')} style={ styles.logoMenuSmall } />
+                </Text>
+
                 <TouchableHighlight
                     style = {{
                         borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
@@ -115,7 +114,7 @@ export default class HomeScreen extends React.Component {
                         backgroundColor:'#305049',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        marginBottom: 50
+                        marginBottom: 50,
                     }} onPress={() => this.props.navigation.navigate("Scan")}>
 
                     <Image source={require('../images/scan.png')} 
@@ -124,6 +123,11 @@ export default class HomeScreen extends React.Component {
                         height: 50,
                     }}/>
                 </TouchableHighlight>
+                <Text style={{  marginRight: 30, marginBottom: 40 }} onPress={() => this.props.navigation.navigate("Info")}> 
+                <Image source={require('../images/info.png')} style={ styles.logoMenuSmall } />
+                </Text>
+                </View>
+
             </View>
         )
     }
@@ -139,6 +143,17 @@ const styles = StyleSheet.create({
     mapStyle: {
       width: Dimensions.get("window").width,
       height: Dimensions.get("window").height,
-      marginTop: 300
+      marginTop: 200
     },
+    logoMenuSmall: {
+      width: 30,
+      height: 30,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    menu: {
+      flexDirection: "row-reverse",
+      alignItems: "center",
+      justifyContent: "center",
+    }
 });

@@ -9,6 +9,7 @@ import ProfileScreen from './screens/ProfileScreen'
 import CardScreen from './screens/CardScreen'
 import QRCodeScreen from './screens/QRCodeScreen'
 import DashboardScreen from './screens/DashboardScreen'
+import InfoScreen from './screens/InfoScreen'
 
 
 import * as firebase from 'firebase';
@@ -35,7 +36,8 @@ const AuthStack = createStackNavigator({
   QRCARD: HomeScreen,
   Scan: ScanScreen,
   Login: LoginScreen,
-  Register: RegisterScreen
+  Register: RegisterScreen,
+  Info: InfoScreen
 });
 
 export default createAppContainer(
