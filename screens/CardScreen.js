@@ -3,7 +3,9 @@ import React from 'react'
 import {View, Text, Image, Button, StyleSheet, TouchableOpacity, TextInput, TouchableHighlight, Dimensions, Touchable, Alert, ScrollView} from 'react-native'
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
+import axios from 'axios';
+
 
 export default class ProfileScreen extends React.Component {
     state = {
@@ -55,6 +57,7 @@ export default class ProfileScreen extends React.Component {
       axios
       .post('http://localhost:3000/user', {
         name: this.state.name,
+        category: this.state.category,
       })
       .then(function (response) {
         alert(JSON.stringify(response.data));
@@ -70,53 +73,24 @@ export default class ProfileScreen extends React.Component {
         return (
           <ScrollView style={{flex: 1, flexDirection: "column", paddingVertical: 50, paddingHorizontal: 10,}}>
           
+
           <View style={styles.form}>
 
-          <Text style={{marginBottom: 20}}>Name : {this.state.displayName}</Text> 
-          <Text>Email : {this.state.email}</Text>                    
-                   
-          <View style={{ marginTop: 32 }}>
-  
-          <TextInput style={styles.input} value={this.state.currentPassword}
-            placeholder="Current Password" autoCapitalize="none" secureTextEntry={true}
-            onChangeText={(text) => { this.setState({currentPassword: text}) }}
-          />
-  
-          <TextInput style={styles.input} value={this.state.newPassword}
-            placeholder="New Password" autoCapitalize="none" secureTextEntry={true}
-            onChangeText={(text) => { this.setState({newPassword: text}) }}
-          />
-  
-          <TouchableOpacity style={styles.button} onPress={this.onChangePasswordPress}>
-            <Text style={{ color: "#FFF", fontWeight: "500" }}>Change Password</Text>
-          </TouchableOpacity>
-
-          </View>
-  
-          <View style={{ marginTop: 32 }}>
-
-          <TextInput style={styles.input} value={this.state.newEmail}
-            placeholder="New Email" autoCapitalize="none" keyboardType="email-address"
-            onChangeText={(text) => { this.setState({newEmail: text}) }}
+          <TextInput style={styles.input} value={this.state.name}
+            placeholder="Name" autoCapitalize="none" keyboardType="email-address"
+            onChangeText={(text) => { this.setState({name: text}) }}
           />
 
-          <TextInput style={styles.input} value={this.state.currentPassword2}
-            placeholder="Current Password" autoCapitalize="none" secureTextEntry={true}
-            onChangeText={(text) => { this.setState({currentPassword2: text}) }}
+          <TextInput style={styles.input} value={this.state.category}
+            placeholder="Category" autoCapitalize="none" keyboardType="email-address"
+            onChangeText={(text) => { this.setState({category: text}) }}
           />
-  
-          <TouchableOpacity style={styles.button} onPress={this.onChangeEmailPress}>
-                    <Text style={{ color: "#FFF", fontWeight: "500" }}>Change Email</Text>
-          </TouchableOpacity>
 
-          </View>
-
-          <View style={{ marginTop: 32 }}>
-          </View>
-
-          </View>
-          <Text style={styles.logout} onPress={this.onSignoutPress}>Logout</Text>
-
+          <TouchableOpacity style={styles.button} onPress={this.addRestaurant}>
+                    <Text style={{ color: "#FFF", fontWeight: "500" }}>Add a card</Text>
+          </TouchableOpacity>                 
+                
+        </View>
         </ScrollView>
             
         )
@@ -195,6 +169,7 @@ const styles = StyleSheet.create({
     },  
     logout: {
       color: "red",
+      marginTop: 15,
       textAlign: "center",
       alignItems: "center",
       justifyContent: "center"

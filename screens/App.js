@@ -3,7 +3,9 @@ import React from 'react'
 import {View, Text, Image, Button, StyleSheet, TouchableOpacity, TextInput, TouchableHighlight, Dimensions, Touchable, Alert, ScrollView} from 'react-native'
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
+import axios from 'axios';
+
 
 export default class ProfileScreen extends React.Component {
     state = {
@@ -70,12 +72,20 @@ export default class ProfileScreen extends React.Component {
         return (
           <ScrollView style={{flex: 1, flexDirection: "column", paddingVertical: 50, paddingHorizontal: 10,}}>
           
+
           <View style={styles.form}>
 
-          <Text style={{marginBottom: 20}}>Name : {this.state.displayName}</Text> 
-          <Text>Email : {this.state.email}</Text>                    
+          <TextInput style={styles.input} value={this.state.name}
+            placeholder="Name" autoCapitalize="none" keyboardType="email-address"
+            onChangeText={(text) => { this.setState({name: text}) }}
+          />
+
+          <TouchableOpacity style={styles.button} onPress={this.addRestaurant}>
+                    <Text style={{ color: "#FFF", fontWeight: "500" }}>Add a restaurant</Text>
+          </TouchableOpacity>                 
                    
           <View style={{ marginTop: 32 }}>
+            
   
           <TextInput style={styles.input} value={this.state.currentPassword}
             placeholder="Current Password" autoCapitalize="none" secureTextEntry={true}
@@ -195,6 +205,7 @@ const styles = StyleSheet.create({
     },  
     logout: {
       color: "red",
+      marginTop: 15,
       textAlign: "center",
       alignItems: "center",
       justifyContent: "center"

@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React from 'react';
 import {View, Text, Image, Button, StyleSheet, TouchableOpacity, TouchableHighlight, Dimensions, Touchable} from 'react-native'
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
@@ -18,7 +18,7 @@ export default class HomeScreen extends React.Component {
         locationResult: null,
         restaurants: [] 
     }
-    
+
 
     componentDidMount() {
         const { email, displayName } = firebase.auth().currentUser;
@@ -29,6 +29,7 @@ export default class HomeScreen extends React.Component {
         .then(res => res.json())
         .then(data => {
         this.setState({ restaurants: data.restaurants })
+
       })
       .catch(console.error)
     }
@@ -36,6 +37,8 @@ export default class HomeScreen extends React.Component {
     handleMapRegionChange = (mapRegion) => {
         this.setState({ mapRegion });
     };
+
+    
 
     async getLocationAsync() {
 
@@ -80,18 +83,23 @@ export default class HomeScreen extends React.Component {
         return (
           
             <View style={styles.container}>
-                 <View style={{display: 'flex', marginBottom: 15}}>
 
-                 <Text style={{marginTop: 10, color: '#EFD1A9'}}>{this.state.displayName}</Text>                    
-
-                <Text style={{marginLeft: 350, marginBottom: 15, color: '#fff'}} onPress={() => this.props.navigation.navigate("Profile")}>
+                <Text style={{marginLeft: 350, marginTop: 20, color: '#fff'}} onPress={() => this.props.navigation.navigate("Profile")}>
                 <Image source={require('../images/user.png')} 
                     style={{
                         width: 30,
                         height: 30,
                     }}/>
                 </Text>
-                </View>
+
+                <Text style={{marginLeft: 350, marginTop: 20, color: '#fff'}} onPress={() => this.props.navigation.navigate("Card")}>
+                <Image source={require('../images/user.png')} 
+                    style={{
+                        width: 30,
+                        height: 30,
+                    }}/>
+                </Text>
+
 
                 <View style={styles.container}>
                     <MapView 

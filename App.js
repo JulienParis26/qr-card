@@ -6,6 +6,7 @@ import RegisterScreen from './screens/RegisterScreen'
 import HomeScreen from './screens/HomeScreen'
 import ScanScreen from './screens/ScanScreen'
 import ProfileScreen from './screens/ProfileScreen'
+import CardScreen from './screens/CardScreen'
 
 import * as firebase from 'firebase';
 
@@ -24,6 +25,7 @@ const AppStack = createStackNavigator({
   QRCARD: HomeScreen,
   Profile: ProfileScreen,
   Scan: ScanScreen,
+  Card: CardScreen,
 });
 
 const AuthStack = createStackNavigator({
