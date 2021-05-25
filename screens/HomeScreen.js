@@ -11,8 +11,7 @@ import Constants from "expo-constants";
 export default class HomeScreen extends React.Component {
   
     state = {
-        email: "",
-        displayName: "",
+        
         mapRegion: { latitude: 48.866667, longitude: 2.333333, latitudeDelta: 0.0922, longitudeDelta: 0.0421 },
         hasLocationPermissions: false,
         locationResult: null,
@@ -21,9 +20,7 @@ export default class HomeScreen extends React.Component {
 
 
     componentDidMount() {
-        const { email, displayName } = firebase.auth().currentUser;
 
-        this.setState({ email, displayName });
         this.getLocationAsync();
         fetch('https://qrcard-app.herokuapp.com/restaurants')
         .then(res => res.json())
@@ -84,7 +81,7 @@ export default class HomeScreen extends React.Component {
           
             <View style={styles.container}>
 
-                <Text style={{marginLeft: 350, color: '#fff'}} onPress={() => this.props.navigation.navigate("Profile")}>
+                <Text style={{marginLeft: 350, color: '#fff'}} onPress={() => this.props.navigation.navigate("Login")}>
                 <Image source={require('../images/user.png')} 
                     style={{
                         width: 30,
@@ -92,21 +89,6 @@ export default class HomeScreen extends React.Component {
                     }}/>
                 </Text>
 
-                <Text style={{marginLeft: 350, color: '#fff'}} onPress={() => this.props.navigation.navigate("Card")}>
-                <Image source={require('../images/user.png')} 
-                    style={{
-                        width: 30,
-                        height: 30,
-                    }}/>
-                </Text>
-
-                <Text style={{marginLeft: 350, color: '#fff'}} onPress={() => this.props.navigation.navigate("QRCode")}>
-                <Image source={require('../images/user.png')} 
-                    style={{
-                        width: 30,
-                        height: 30,
-                    }}/>
-                </Text>
 
                 <View style={styles.container}>
                     <MapView 

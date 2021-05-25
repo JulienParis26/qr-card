@@ -8,11 +8,13 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "buffer": "5.0.6",
     "@prisma/client": "^2.22.1",
     "@react-native-firebase/storage": "^12.0.0",
+    "@react-navigation/drawer": "^5.12.5",
     "@react-navigation/native": "^5.9.4",
     "axios": "^0.21.1",
+    "buffer": "5.0.6",
+    "curved-bottom-navigation-bar": "^2.0.2",
     "expo": "~41.0.1",
     "expo-barcode-scanner": "~10.1.2",
     "expo-constants": "~10.1.3",

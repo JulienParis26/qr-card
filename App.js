@@ -8,6 +8,7 @@ import ScanScreen from './screens/ScanScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import CardScreen from './screens/CardScreen'
 import QRCodeScreen from './screens/QRCodeScreen'
+import DashboardScreen from './screens/DashboardScreen'
 
 
 import * as firebase from 'firebase';
@@ -24,14 +25,15 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const AppStack = createStackNavigator({
-  QRCARD: HomeScreen,
+  Dashboard: DashboardScreen,
   Profile: ProfileScreen,
-  Scan: ScanScreen,
   Card: CardScreen,
   QRCode: QRCodeScreen,
 });
 
 const AuthStack = createStackNavigator({
+  QRCARD: HomeScreen,
+  Scan: ScanScreen,
   Login: LoginScreen,
   Register: RegisterScreen
 });
