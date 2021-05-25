@@ -7,6 +7,7 @@ import * as firebase from 'firebase';
 import axios from 'axios';
 
 
+
 export default class ProfileScreen extends React.Component {
     state = {
         email: "",
@@ -57,7 +58,7 @@ export default class ProfileScreen extends React.Component {
       axios
       .post('http://localhost:3000/user', {
         name: this.state.name,
-        category: this.state.category,
+        category: this.state.category
       })
       .then(function (response) {
         alert(JSON.stringify(response.data));
@@ -68,11 +69,9 @@ export default class ProfileScreen extends React.Component {
       });
     }
 
-
     render() {
         return (
           <ScrollView style={{flex: 1, flexDirection: "column", paddingVertical: 50, paddingHorizontal: 10,}}>
-          
 
           <View style={styles.form}>
 

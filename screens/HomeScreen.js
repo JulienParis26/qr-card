@@ -84,7 +84,7 @@ export default class HomeScreen extends React.Component {
           
             <View style={styles.container}>
 
-                <Text style={{marginLeft: 350, marginTop: 20, color: '#fff'}} onPress={() => this.props.navigation.navigate("Profile")}>
+                <Text style={{marginLeft: 350, color: '#fff'}} onPress={() => this.props.navigation.navigate("Profile")}>
                 <Image source={require('../images/user.png')} 
                     style={{
                         width: 30,
@@ -92,7 +92,7 @@ export default class HomeScreen extends React.Component {
                     }}/>
                 </Text>
 
-                <Text style={{marginLeft: 350, marginTop: 20, color: '#fff'}} onPress={() => this.props.navigation.navigate("Card")}>
+                <Text style={{marginLeft: 350, color: '#fff'}} onPress={() => this.props.navigation.navigate("Card")}>
                 <Image source={require('../images/user.png')} 
                     style={{
                         width: 30,
@@ -100,6 +100,13 @@ export default class HomeScreen extends React.Component {
                     }}/>
                 </Text>
 
+                <Text style={{marginLeft: 350, color: '#fff'}} onPress={() => this.props.navigation.navigate("QRCode")}>
+                <Image source={require('../images/user.png')} 
+                    style={{
+                        width: 30,
+                        height: 30,
+                    }}/>
+                </Text>
 
                 <View style={styles.container}>
                     <MapView 
