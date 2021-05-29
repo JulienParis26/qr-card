@@ -6,8 +6,6 @@ import { Marker } from 'react-native-maps';
 import * as firebase from 'firebase';
 import axios from 'axios';
 
-
-
 export default class ProfileScreen extends React.Component {
     state = {
         email: "",
@@ -56,9 +54,11 @@ export default class ProfileScreen extends React.Component {
 
     addRestaurant = () => {
       axios
-      .post('http://localhost:3000/user', {
+      .post('https://qrcard-server.herokuapp.com/user', {
         name: this.state.name,
-        category: this.state.category
+        category: this.state.category,
+        lat: this.state.lat,
+        long: this.state.long
       })
       .then(function (response) {
         alert(JSON.stringify(response.data));
@@ -76,13 +76,23 @@ export default class ProfileScreen extends React.Component {
           <View style={styles.form}>
 
           <TextInput style={styles.input} value={this.state.name}
-            placeholder="Name" autoCapitalize="none" keyboardType="email-address"
+            placeholder="Name" autoCapitalize="none"
             onChangeText={(text) => { this.setState({name: text}) }}
           />
 
           <TextInput style={styles.input} value={this.state.category}
-            placeholder="Category" autoCapitalize="none" keyboardType="email-address"
+            placeholder="Category" autoCapitalize="none"
             onChangeText={(text) => { this.setState({category: text}) }}
+          />
+
+          <TextInput style={styles.input} value={this.state.lat}
+            placeholder="Latitude" autoCapitalize="none"
+            onChangeText={(text) => { this.setState({lat: text}) }}
+          />
+
+          <TextInput style={styles.input} value={this.state.long}
+            placeholder="Longitude" autoCapitalize="none"
+            onChangeText={(text) => { this.setState({long: text}) }}
           />
 
           <TouchableOpacity style={styles.button} onPress={this.addRestaurant}>

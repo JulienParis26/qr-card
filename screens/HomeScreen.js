@@ -15,17 +15,18 @@ export default class HomeScreen extends React.Component {
         mapRegion: { latitude: 48.866667, longitude: 2.333333, latitudeDelta: 0.0922, longitudeDelta: 0.0421 },
         hasLocationPermissions: false,
         locationResult: null,
-        restaurants: [] 
+        users: [] 
     }
 
 
     componentDidMount() {
 
         this.getLocationAsync();
-        fetch('https://qrcard-app.herokuapp.com/restaurants')
+        fetch('https://qrcard-server.herokuapp.com/users')
         .then(res => res.json())
         .then(data => {
-        this.setState({ restaurants: data.restaurants })
+        this.setState({ users: data })
+
 
       })
       .catch(console.error)
@@ -59,11 +60,11 @@ export default class HomeScreen extends React.Component {
     }
 
     mapMarkers = () => {
-        return this.state.restaurants.map((restaurant) => <Marker
-          key={restaurant.id}
-          coordinate={{ latitude: restaurant.lat, longitude: restaurant.lon }}
-          title={restaurant.name}
-          description={restaurant.category}
+        return this.state.users.map((user) => <Marker
+          key={user.id}
+          coordinate={{ latitude: parseFloat(user.lat), longitude: parseFloat(user.long) }}
+          title={user.name}
+          description={user.category}
         >
         
         <View>
